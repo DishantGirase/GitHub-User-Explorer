@@ -1,0 +1,46 @@
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* Sidebar holds the fixed-width profile card on larger screens */
+.sidebar {
+  width: 100%;
+}
+
+/* Content area expands to take remaining space */
+.content {
+  flex: 1;
+  min-width: 0; /* Prevents flex children from overflowing */
+}
+
+/* Empty state styling */
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #8b949e;
+  font-size: 1rem;
+}
+
+/* Responsive side-by-side desktop layout */
+@media (min-width: 768px) {
+  .dataContainer {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px; /* Stays visible while scrolling through long repo lists */
+  }
+}

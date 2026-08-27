@@ -1,0 +1,73 @@
+.card {
+  border: 1px solid #30363d;
+  background-color: #0d1117;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #58a6ff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.title:hover {
+  text-decoration: underline;
+}
+
+.visibility {
+  font-size: 0.75rem;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  border-radius: 12px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+}
+
+.description {
+  font-size: 0.85rem;
+  color: #8b949e;
+  line-height: 1.4;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+
+.language {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.langDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #f1e05a; /* Generic accent; can be dynamically styled */
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
