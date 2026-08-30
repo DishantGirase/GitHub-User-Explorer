@@ -1,7 +1,9 @@
 import USerProfileCard from "./userProfileCard";
 import ReposContainer from "./reposContainer";
 import styles from "./dataContainer.module.css";
-const DataContainer = ({ username }) => {
+import { useState } from "react";
+
+const DataContainer = ({ username, loadRepos, setLoadRepos }) => {
   if (!username) {
     return (
       <div className={styles.emptyState}>
@@ -13,12 +15,13 @@ const DataContainer = ({ username }) => {
   return (
     <main className={styles.dataContainer}>
       <aside className={styles.sidebar}>
-        <USerProfileCard username={username} />
+        <USerProfileCard username={username} setLoadRepos={setLoadRepos} />
       </aside>
-
-      <section className={styles.content}>
-        <ReposContainer username={username} />
-      </section>
+      {loadRepos ? (
+        <section className={styles.content}>
+          <ReposContainer username={username} loadRepos={loadRepos} />
+        </section>
+      ) : null}
     </main>
   );
 };

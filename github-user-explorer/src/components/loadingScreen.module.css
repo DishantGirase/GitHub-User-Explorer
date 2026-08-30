@@ -1,0 +1,109 @@
+.loadingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  width: 100%;
+  padding: 32px 16px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Spinner */
+.spinnerContainer {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.outerRing {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid rgba(88, 166, 255, 0.15);
+  border-top-color: #58a6ff;
+  animation: spin 0.9s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
+}
+
+.innerDot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #58a6ff;
+  border-radius: 50%;
+  animation: pulse 1.2s ease-in-out infinite alternate;
+}
+
+/* Typography */
+.title {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #e6edf3;
+  letter-spacing: 0.5px;
+}
+
+.message {
+  margin: 0 0 16px 0;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+/* Indeterminate Progress Bar */
+.progressBar {
+  width: 180px;
+  height: 4px;
+  background-color: #21262d;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background-color: #58a6ff;
+  border-radius: 4px;
+  animation: slideProgress 1.4s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideProgress {
+  0% {
+    left: -40%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    left: 100%;
+  }
+}

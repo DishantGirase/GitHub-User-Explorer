@@ -7,9 +7,11 @@ import "./App.css";
 
 function App() {
   const [isUserNameEnterd, setIsUserNameEnterd] = useState(false);
+  const [loadRepos, setLoadRepos] = useState(false);
   const [username, setUserName] = useState([]);
   const onSearch = (userName) => {
     setUserName(userName);
+    setLoadRepos(false);
     setIsUserNameEnterd(true);
   };
 
@@ -17,8 +19,14 @@ function App() {
     <>
       <Heading />
       <InputBox onSearch={onSearch} />
-      {/* <DataContainer username={username} /> */}
-      {isUserNameEnterd ? <DataContainer username={username} /> : null};
+      {isUserNameEnterd ? (
+        <DataContainer
+          username={username}
+          loadRepos={loadRepos}
+          setLoadRepos={setLoadRepos}
+        />
+      ) : null}
+      ;
     </>
   );
 }

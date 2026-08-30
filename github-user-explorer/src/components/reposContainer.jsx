@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
 import styles from "./reposContainer.module.css";
 import RepoCard from "./repoCard";
-const ReposContainer = ({ username }) => {
+import LoadingScreen from "./loadingScreen";
+const ReposContainer = ({ username, loadRepos }) => {
+  const [isFetched, setIsFetched] = useState(true);
   const [repos, setRepos] = useState([]);
   useEffect(() => {
+    setIsFetched(false);
     fetch(
       `https://api.github.com/users/${username}/repos?sort=stars&direction=desc`,
     )
       .then((repos) => repos.json())
-      .then((repos) => setRepos(repos));
-  }, []);
+      .then((repos) => {
+        setRepos(repos);
+        setIsFetched(true);
+      });
+  }, [username, loadRepos]);
+  if (!isFetched) {
+    return <LoadingScreen />;
+  }
+
   return (
     <section className={styles.container}>
       <h3 className={styles.heading}>Latest Repositories</h3>
