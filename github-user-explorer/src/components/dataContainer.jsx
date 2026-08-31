@@ -1,7 +1,6 @@
 import USerProfileCard from "./userProfileCard";
 import ReposContainer from "./reposContainer";
 import styles from "./dataContainer.module.css";
-import { useState } from "react";
 
 const DataContainer = ({ username, loadRepos, setLoadRepos }) => {
   if (!username) {

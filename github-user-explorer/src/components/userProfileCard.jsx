@@ -4,17 +4,48 @@ import LoadingScreen from "./loadingScreen";
 const USerProfileCard = ({ username, setLoadRepos }) => {
   const [user, setUser] = useState([]);
   const [isFetched, setIsFetched] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     setIsFetched(false);
+    setError(null);
+
     fetch(`https://api.github.com/users/${username}`)
-      .then((Response) => Response.json())
-      .then((Response) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            response.status === 404
+              ? "User not found"
+              : `HTTP error! Status: ${response.status}`,
+          );
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setUser(data);
+      })
+      .catch((err) => {
+        console.error("Fetch failed:", err);
+        setUser(null);
+        setError(err.message);
+      })
+      .finally(() => {
         setIsFetched(true);
-        setUser(Response);
       });
   }, [username]);
+
   if (!isFetched) {
     return <LoadingScreen />;
+  }
+
+  if (error || !user) {
+    return (
+      <div className={styles["profile-card"]}>
+        <p className={styles["profile-bio"]}>
+          {error || "Something went wrong."}
+        </p>
+      </div>
+    );
   }
   return (
     <>
